@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+	<!-- 第五版 -->
+	<!-- <bean id="WorkingImpl" class="cn.yesway.SpringAOP.impl.WorkingImpl"/>
+	<bean id="WorkBeforeAdvice" class="cn.yesway.SpringAOP.WorkBeforeAdvice"/>
+	<bean id="workingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interfaces" value="cn.yesway.SpringAOP.Working"/> 需要代理的接口
+        <property name="target" ref="WorkingImpl"/>       接口实现类
+        <property name="interceptorNames" >                 拦截器名称（也就是增强类名称，Spring Bean 的 id）
+            <list>
+                <value>WorkBeforeAdvice</value>
+            </list>
+        </property>
+	</bean> -->
+	<!-- 第六版 -->
+	<!-- <bean id="WorkingImpl" class="cn.yesway.SpringAOP.impl.WorkingImpl"/>
+	<bean id="WorkAdvice" class="cn.yesway.SpringAOP.WorkAdvice"></bean>
+	aop配置
+    <aop:config>
+        切面
+        <aop:aspect id="workadvice" ref="WorkAdvice">
+            切点
+            <aop:pointcut id="pointcut1" expression="execution(* cn.yesway.SpringAOP.impl.WorkingImpl.*(..))"/>
+            连接通知方法与切点
+            <aop:before method="before" pointcut-ref="pointcut1"/>
+            <aop:after method="after" pointcut-ref="pointcut1"/>
+        </aop:aspect>
+    </aop:config> -->
+    <!-- 第七版 -->
+    <context:component-scan base-package="cn.yesway"></context:component-scan>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+</beans>
